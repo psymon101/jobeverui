@@ -1,0 +1,14 @@
+{
+  "name": "ever-jobs-ui-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Self-hosted web frontend for Ever Jobs — static server, API proxy and settings store",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

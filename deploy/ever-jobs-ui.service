@@ -1,0 +1,38 @@
+# Ever Jobs UI — self-hosted frontend for the Ever Jobs API.
+#
+# Install:
+#   sudo cp deploy/ever-jobs-ui.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now ever-jobs-ui
+#   systemctl status ever-jobs-ui && journalctl -u ever-jobs-ui -f
+#
+# The service needs no restart when the API connection changes — the Settings
+# page writes server/data/settings.json and the running process picks it up.
+
+[Unit]
+Description=Ever Jobs UI (React frontend + API proxy, port 3002)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=itadmin
+Group=itadmin
+WorkingDirectory=/home/itadmin/github/jobeverui/server
+ExecStart=/home/itadmin/.nvm/versions/node/v25.6.1/bin/node /home/itadmin/github/jobeverui/server/src/index.js
+Environment=PORT=3002
+Environment=NODE_ENV=production
+Restart=always
+RestartSec=3
+# Modest hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+# server/data (settings.json) must stay writable:
+ReadWritePaths=/home/itadmin/github/jobeverui/server/data
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

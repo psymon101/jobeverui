@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+/* Job-details drawer (fixed, right, max-w-xl = 36rem): on wide screens
+   reserve its width so it sits beside the page instead of covering the
+   results table and header controls. Narrow screens keep the full-width
+   sheet pattern. */
+@media (min-width: 80rem) {
+  body.job-drawer-open #root {
+    padding-right: 36rem;
+  }
+}
+
+body {
+  @apply bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+}
+
+/* Thin scrollbars for dense panels */
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  @apply rounded bg-slate-300 dark:bg-slate-700;
+}
+
+.pager-btn {
+  @apply rounded border border-slate-300 bg-white px-2 py-0.5 text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700;
+}
+
+/* Sanitized job description rendering */
+.jobdesc {
+  @apply text-sm leading-relaxed;
+  overflow-wrap: anywhere;
+}
+.jobdesc h1,
+.jobdesc h2,
+.jobdesc h3,
+.jobdesc h4 {
+  @apply mt-4 mb-2 font-semibold;
+}
+.jobdesc h1 { @apply text-lg; }
+.jobdesc h2 { @apply text-base; }
+.jobdesc h3, .jobdesc h4 { @apply text-sm; }
+.jobdesc p { @apply my-2; }
+.jobdesc ul { @apply my-2 list-disc pl-5; }
+.jobdesc ol { @apply my-2 list-decimal pl-5; }
+.jobdesc a { @apply text-blue-600 underline dark:text-blue-400; }
+.jobdesc table { @apply my-2 border-collapse text-xs; }
+.jobdesc th, .jobdesc td { @apply border border-slate-300 px-2 py-1 dark:border-slate-700; }
+.jobdesc code { @apply rounded bg-slate-100 px-1 dark:bg-slate-800; }
+.jobdesc pre { @apply my-2 overflow-x-auto rounded bg-slate-100 p-2 dark:bg-slate-800; }
+.jobdesc img { @apply my-2 max-h-64 rounded; }

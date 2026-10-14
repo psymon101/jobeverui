@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Build output (rebuild with: cd web && npm run build)
+web/dist/
+web/*.tsbuildinfo
+
+# Runtime state (machine-local API connection settings, created on first save)
+server/data/
+
+# Editor / tooling
+.openchamber/
+*.log

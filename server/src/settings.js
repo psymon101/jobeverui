@@ -12,7 +12,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { validateApiTarget, parseApiUrl } from './validate.js';
 
-export const BUILT_IN_DEFAULTS = { protocol: 'http', host: '192.168.1.45', port: 3001 };
+export const BUILT_IN_DEFAULTS = { protocol: 'http', host: '127.0.0.1', port: 3001 };
 
 export class SettingsStore {
   /**

@@ -140,7 +140,7 @@ export default function SettingsPage({ onStatusChange }: { onStatusChange: () =>
             <input
               className={inputCls}
               value={form.host}
-              placeholder="192.168.1.45"
+              placeholder="jobs-api.internal"
               spellCheck={false}
               onChange={(e) => { setForm({ ...form, host: e.target.value.trim() }); setTestResult(null); setSaveOk(false); }}
             />

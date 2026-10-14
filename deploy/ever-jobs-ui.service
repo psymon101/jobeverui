@@ -1,6 +1,6 @@
 # Ever Jobs UI — self-hosted frontend for the Ever Jobs API.
 #
-# Install:
+# TEMPLATE — adjust user/paths for your install, then:
 #   sudo cp deploy/ever-jobs-ui.service /etc/systemd/system/
 #   sudo systemctl daemon-reload
 #   sudo systemctl enable --now ever-jobs-ui
@@ -16,10 +16,10 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=itadmin
-Group=itadmin
-WorkingDirectory=/home/itadmin/github/jobeverui/server
-ExecStart=/home/itadmin/.nvm/versions/node/v25.6.1/bin/node /home/itadmin/github/jobeverui/server/src/index.js
+User=everjobs
+Group=everjobs
+WorkingDirectory=/opt/ever-jobs-ui/server
+ExecStart=/usr/bin/node /opt/ever-jobs-ui/server/src/index.js
 Environment=PORT=3002
 Environment=NODE_ENV=production
 Restart=always
@@ -29,7 +29,7 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=full
 # server/data (settings.json) must stay writable:
-ReadWritePaths=/home/itadmin/github/jobeverui/server/data
+ReadWritePaths=/opt/ever-jobs-ui/server/data
 
 StandardOutput=journal
 StandardError=journal

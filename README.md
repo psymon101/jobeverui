@@ -1,11 +1,8 @@
 # Ever Jobs UI
 
 A self-hosted web frontend for an [Ever Jobs](#about-the-api) job-search API.
-React 19 frontend + a **zero-dependency Node proxy server** on port 3002.
+React 19 frontend.
 
-The browser never talks to the API directly — every request goes through the
-server-side proxy, which holds the (hot-swappable) API connection settings and
-enforces SSRF and CSRF protections.
 
 **Search, live:** pick sources explicitly, stream results in, and see exactly
 what each source did — returned / empty / blocked / failed, derived from the
@@ -20,9 +17,6 @@ stream itself, never re-queried.
   skipped unless one is given). NDJSON streaming with live progress,
   incremental results, and cancel. One keyword per line = separate merged
   searches.
-- **Diagnostics:** per-source returned/empty/blocked/failed derived from
-  stream facts. `results_wanted`/`partial` are shown as truncation notes, not
-  failures. Expandable panel + per-source table.
 - **Results:** local keyword filter (all words must match, optional
   title-only), sort, pagination, dedup by `dedupKey`, details drawer with
   sanitized descriptions, and apply links.

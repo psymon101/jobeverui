@@ -41,11 +41,6 @@ viewports the app reserves a column so the table stays usable beside it:
 
 ![Job details drawer](docs/screenshots/job-details.png)
 
-Sources page — catalogue, category filters, circuit state, and per-source
-observations from your own searches:
-
-![Sources page](docs/screenshots/sources.png)
-
 Settings — the whole API-connection surface. Test runs `/health` plus a
 GraphQL `listSources` compatibility probe:
 
